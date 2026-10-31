@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7dce7">
+<title>A Birthday Made With Love</title>
+<style>
+:root{--pink:#f5bfd2;--deep:#9d4268;--cream:#fff8f5;--ink:#593747}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:var(--ink);background:linear-gradient(135deg,#fff8f5,#fbe2eb 55%,#f6d3df);text-align:center}
+button,input,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:999px;padding:12px 20px;background:var(--deep);color:white;box-shadow:0 5px 15px #9d426833}
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:35px 18px;position:relative;overflow:hidden}
+.card{width:min(720px,100%);background:#ffffffd9;border:1px solid #fff;border-radius:28px;padding:34px 22px;box-shadow:0 20px 60px #9d426822;position:relative;z-index:1}
+.eyebrow{letter-spacing:3px;text-transform:uppercase;font:12px Arial;color:var(--deep)}
+h1{font-size:clamp(2.4rem,9vw,5rem);line-height:1.05;margin:16px 0;color:var(--deep)}
+h2{color:var(--deep);font-size:clamp(1.7rem,6vw,2.5rem)}
+.subtitle{font:16px Arial;line-height:1.7}
+.big-heart{font-size:42px;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.18)}}.float{position:absolute;opacity:.45;animation:rise 9s linear infinite;bottom:-40px;font-size:24px}
+@keyframes rise{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+section{padding:55px 18px}.inner{max-width:850px;margin:auto}.letter{background:#fffaf8;border-radius:24px;padding:28px;line-height:1.9;box-shadow:0 10px 35px #9d426815;white-space:pre-line}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-top:20px}
+.photo{aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:#f5dce5;display:flex;align-items:center;justify-content:center;color:#9d4268;font:14px Arial}
+.photo img{width:100%;height:100%;object-fit:cover}
+.surprise{display:none;margin-top:20px;background:#fff;border-radius:20px;padding:25px;line-height:1.8}
+footer{padding:35px 15px;font:13px Arial;color:#98677d}
+#editor{display:none;position:fixed;inset:0;background:#fffaf5;z-index:10;overflow:auto;padding:22px}
+.editorbox{max-width:650px;margin:auto;text-align:left}.editorbox label{display:block;font:14px Arial;margin:14px 0 6px}
+.editorbox input,.editorbox textarea{width:100%;padding:12px;border:1px solid #e6b8c9;border-radius:12px;background:white;color:#593747}
+.editorbox textarea{min-height:100px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.small{font:12px Arial;line-height:1.6;color:#916b7c}.toptools{position:fixed;right:12px;top:12px;z-index:5}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="toptools"><button onclick="openEditor()" aria-label="Customize website">✎ Customize</button></div>
+<header class="hero">
+  <span class="float" style="left:8%;animation-delay:0s">♡</span><span class="float" style="left:25%;animation-delay:3s">✦</span><span class="float" style="left:80%;animation-delay:1s">♡</span><span class="float" style="left:65%;animation-delay:5s">✧</span>
+  <div class="card">
+    <div class="eyebrow">A little page, made with love</div><div class="big-heart">♡</div>
+    <h1>Happy Birthday,<br><span id="heroName">Your Special Person</span>!</h1>
+    <p class="subtitle" id="heroSubtitle">Today is all about celebrating you and the happiness you bring.</p>
+    <button onclick="document.getElementById('message').scrollIntoView({behavior:'smooth'})">Open your surprise ↓</button>
+  </div>
+</header>
+<section id="message"><div class="inner">
+  <div class="eyebrow">A message from the heart</div><h2>To someone wonderful</h2>
+  <div class="letter" id="letterText">Happy Birthday! 🎂
+
+I hope your day is filled with laughter, beautiful moments and all the little things that make you smile. You deserve so much happiness today and always.
+
+Keep shining, keep dreaming, and never forget how special you are. 💗
+
+With love,
+Someone who cares</div>
+</div></section>
+<section><div class="inner">
+  <div class="eyebrow">Little moments</div><h2>Our favourite memories</h2>
+  <p class="subtitle">Add up to three photos using the Customize button.</p>
+  <div class="gallery"><div class="photo" id="photoBox1">Photo 1</div><div class="photo" id="photoBox2">Photo 2</div><div class="photo" id="photoBox3">Photo 3</div></div>
+</div></section>
+<section><div class="inner">
+  <div class="eyebrow">One more thing</div><h2>A little birthday surprise</h2>
+  <p class="subtitle">Because one birthday wish is never enough…</p>
+  <button onclick="document.getElementById('surprise').style.display='block';this.style.display='none'">Tap to reveal ✨</button>
+  <div class="surprise" id="surprise"><div class="big-heart">💗</div><h2 id="surpriseTitle">You make life brighter!</h2><p id="surpriseText">May this new year of your life bring you endless reasons to smile. Happy Birthday! 🎉</p></div>
+</div></section>
+<section><div class="inner"><h2>Make a wish ✨</h2><p class="subtitle">May every beautiful thing find its way to you.</p><div class="big-heart">🎂</div></div></section>
+<footer>Made with love • A birthday surprise just for you</footer>
+
+<div id="editor"><div class="editorbox">
+  <div class="eyebrow">Template customizer</div><h2>Make it theirs 💗</h2>
+  <p class="small">Enter the birthday details and paste the public image URLs for the photos. Generate a link to share this exact customized page.</p>
+  <label>Birthday person's name</label><input id="inName" placeholder="e.g. Riya">
+  <label>Opening line</label><textarea id="inSubtitle"></textarea>
+  <label>Personal birthday message</label><textarea id="inLetter"></textarea>
+  <label>Surprise heading</label><input id="inSurpriseTitle">
+  <label>Surprise message</label><textarea id="inSurpriseText"></textarea>
+  <label>Photo 1 — public image URL</label><input id="photoUrl1" placeholder="https://.../photos/photo1.jpg">
+  <label>Photo 2 — public image URL</label><input id="photoUrl2" placeholder="https://.../photos/photo2.jpg">
+  <label>Photo 3 — public image URL</label><input id="photoUrl3" placeholder="https://.../photos/photo3.jpg">
+  <div class="actions">
+    <button onclick="previewChanges()">Preview changes</button><button onclick="generateShareLink()">Generate shareable link</button>
+    <button onclick="closeEditor()" style="background:#b9859c">Close</button><button onclick="resetTemplate()" style="background:#777">Reset template</button>
+  </div>
+  <label>Shareable link</label><input id="shareLink" readonly placeholder="Your link will appear here">
+  <div class="actions"><button onclick="copyShareLink()" style="background:#6d8b73">Copy link</button></div>
+  <p class="small">Important: the photos must be uploaded first to the public photos folder in your GitHub repository. Anyone with the share link can view the page and photos. Only upload photos you have permission to share.</p>
+</div></div>
+<script>
+const defaults={name:"Your Special Person",subtitle:"Today is all about celebrating you and the happiness you bring.",letter:"Happy Birthday! 🎂\n\nI hope your day is filled with laughter, beautiful moments and all the little things that make you smile. You deserve so much happiness today and always.\n\nKeep shining, keep dreaming, and never forget how special you are. 💗\n\nWith love,\nSomeone who cares",surpriseTitle:"You make life brighter!",surpriseText:"May this new year of your life bring you endless reasons to smile. Happy Birthday! 🎉",photo1:"",photo2:"",photo3:""};
+const $=id=>document.getElementById(id);
+function setPhoto(i,url){const box=$("photoBox"+i);box.innerHTML="";if(!url){box.textContent="Photo "+i;return}const im=document.createElement("img");im.src=url;im.alt="Birthday memory photo "+i;im.onerror=()=>{box.textContent="Photo "+i+" — image not found"};box.appendChild(im)}
+function apply(d){$("heroName").textContent=d.name;$("heroSubtitle").textContent=d.subtitle;$("letterText").textContent=d.letter;$("surpriseTitle").textContent=d.surpriseTitle;$("surpriseText").textContent=d.surpriseText;[1,2,3].forEach(i=>setPhoto(i,d["photo"+i]||""))}
+function currentDetails(){return{name:$("inName").value.trim()||defaults.name,subtitle:$("inSubtitle").value,letter:$("inLetter").value,surpriseTitle:$("inSurpriseTitle").value||defaults.surpriseTitle,surpriseText:$("inSurpriseText").value||defaults.surpriseText,photo1:$("photoUrl1").value.trim(),photo2:$("photoUrl2").value.trim(),photo3:$("photoUrl3").value.trim()}}
+function fillEditor(d){$("inName").value=d.name;$("inSubtitle").value=d.subtitle;$("inLetter").value=d.letter;$("inSurpriseTitle").value=d.surpriseTitle;$("inSurpriseText").value=d.surpriseText;[1,2,3].forEach(i=>$("photoUrl"+i).value=d["photo"+i]||"")}
+function openEditor(){const d=JSON.parse(localStorage.getItem("birthdayTemplate")||"null")||defaults;fillEditor(d);$("shareLink").value="";$("editor").style.display="block"}
+function previewChanges(){const d=currentDetails();localStorage.setItem("birthdayTemplate",JSON.stringify(d));apply(d)}
+function generateShareLink(){const d=currentDetails();const q=new URLSearchParams({n:d.name,s:d.subtitle,l:d.letter,st:d.surpriseTitle,sm:d.surpriseText,p1:d.photo1,p2:d.photo2,p3:d.photo3});$("shareLink").value=location.origin+location.pathname+"?"+q.toString();localStorage.setItem("birthdayTemplate",JSON.stringify(d));apply(d)}
+async function copyShareLink(){if(!$("shareLink").value)generateShareLink();try{await navigator.clipboard.writeText($("shareLink").value);alert("Shareable link copied!")}catch(e){$("shareLink").focus();$("shareLink").select();alert("Select and copy the link shown above.")}}
+function closeEditor(){$("editor").style.display="none"}
+function resetTemplate(){if(confirm("Reset all text and photos to the original birthday template?")){localStorage.removeItem("birthdayTemplate");apply(defaults);fillEditor(defaults);$("shareLink").value=""}}
+function detailsFromLink(){const q=new URLSearchParams(location.search);if(!q.has("n"))return null;return{name:q.get("n")||defaults.name,subtitle:q.get("s")||"",letter:q.get("l")||"",surpriseTitle:q.get("st")||defaults.surpriseTitle,surpriseText:q.get("sm")||defaults.surpriseText,photo1:q.get("p1")||"",photo2:q.get("p2")||"",photo3:q.get("p3")||""}}
+const shared=detailsFromLink();apply(shared||JSON.parse(localStorage.getItem("birthdayTemplate")||"null")||defaults);
+</script>
+</body>
+</html>
